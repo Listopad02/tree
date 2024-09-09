@@ -1,12 +1,10 @@
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import Layout from './hoc/Layout/Layout';
 
 function App() {
   return (
-    <div className="App">
-      <Counter />
-    </div>
-  );
-}
+    <Layout>
+      <p>test</p>
+    </Layout>
+)}
 
 export default App;
