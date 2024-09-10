@@ -2,7 +2,6 @@ import { Tabs, Select } from "antd"
 import type { TabsProps } from 'antd';
 import { useAppSelector } from "../../store/hooks";
 import { Properties } from "../../types/types";
-import { useState } from "react";
 import { SelectComponent } from "../Select/Select";
 import styled from "styled-components";
 
@@ -22,7 +21,6 @@ const StyledSelect = styled(Select)`
 
 export const TreeOptions = () => {
     const { itemProperties }: { itemProperties: Properties[] | [] } = useAppSelector(state => state.tree)
-    const [selectedValue, setSelectedValue] = useState<string | undefined>(undefined)
 
     const items: TabsProps['items'] = itemProperties.map((item, i) => ({
         key: item.id,
@@ -32,14 +30,11 @@ export const TreeOptions = () => {
                 {item.options.map((option, i) => <Text key={i}>{option}</Text>)}
             </Container> :
             <Container>
-                <StyledSelect 
-                    options={item.options.map(option => ({ value: option, label: option }))} 
-                    value={selectedValue || item.selected} 
-                    onChange={(value) => {
-                        setSelectedValue(value as string)
-                    }}
-                />
-                {/* <SelectComponent options={item.options.map(option => ({ value: option, label: option }))} /> */}
+                {/* <StyledSelect 
+                    options={item.options.map(option => ({ value: option, label: option }))}
+                    value={item.selected} 
+                /> */}
+                <SelectComponent options={item} />
             </Container>
     }))
 

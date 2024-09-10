@@ -11,12 +11,9 @@ export const SelectComponent = (options: any) => {
     const [selectedValue, setSelectedValue] = useState<string | undefined>(undefined)
 
     return (
-        <StyledSelect 
-            options={options.options} 
+        <StyledSelect  
             value={selectedValue} 
-            onChange={(value) => {
-                setSelectedValue(value as string)
-            }}
+            options={options.options.options.map((item: string) => ({ value: item, label: item }))}
         />
     )
 }
