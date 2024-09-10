@@ -1,30 +1,35 @@
 import { FC, useState } from 'react'
 import { TreeProps, TreeNodeProps } from '../../types/types';
 import { RightOutlined, DownOutlined } from '@ant-design/icons';
-import { TreeWrapper } from './TreeWrapper';
+import { fetchItem, fetchSelectedName } from '../../store/actions/tree';
+import { useAppDispatch } from '../../store/hooks';
 import "./Tree.scss"
 
 const TreeNode: FC<TreeNodeProps> = ({ node }) => {
     const [isVisible, setIsVisible] = useState(false)
     const hasChildren = !!node.children
+    const dispatch = useAppDispatch()
 
     const handleClick = () => {
         setIsVisible(!isVisible)
 
         if (!hasChildren) {
-            // dispatch sth...
+            dispatch(fetchItem(node.id))
+            dispatch(fetchSelectedName(node.name))
         }
     }
 
     return (
-        <ul className='list'>
+        <ul className='tree-parent'>
             <li onClick={handleClick}>
                 <div>
                     {hasChildren && (isVisible ? <DownOutlined /> : <RightOutlined />)}
                     <p>{node.name}</p>
                 </div>
-                <TreeWrapper id={node.id} />
             </li>
+            <ul className='tree-child'>
+                {(hasChildren && isVisible) && <Tree data={node.children!} />}
+            </ul>
         </ul>
     )
 }

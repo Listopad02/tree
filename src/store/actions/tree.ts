@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TreeProps } from "../../types/types";
+import { TreeProps, Properties } from "../../types/types";
 
 export function loadingStart() {
     return {
@@ -20,4 +20,22 @@ export async function fetchTreeData(dispatch: any, url = '../data.json') {
     const data = response.data
 
     dispatch(dataFetchSuccess(data))
+}
+
+export function fetchItem(data: string) {
+    return {
+        type: "fetch_item", data
+    }
+}
+
+export function fetchSelectedName(data: string) {
+    return {
+        type: "fetch_selected_name", data
+    }
+}
+
+export function fetchSelectedProperties(data: Properties[]) {
+    return {
+        type: "fetch_selected_properties", data
+    }
 }

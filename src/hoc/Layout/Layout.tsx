@@ -7,12 +7,16 @@ import styled from "styled-components"
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 70%;
   border-radius: 7px;
-  width: 80%;
+  width: 70%;
   background: #fff;
+`
+const TreeContainer = styled.div`
+  width: 30%;
+  height: 100%;
+  overflow-y: scroll;
 `
 
 const Layout: FC<LayoutProps> = ({ children }) => {
@@ -25,7 +29,10 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 
   return (
     <Container>
-      <Tree data={treeData} />
+      <TreeContainer>
+        <Tree data={treeData} />
+      </TreeContainer>
+      <div style={{ width: "70%" }}></div>
     </Container>
   )
 }
