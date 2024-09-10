@@ -16,18 +16,16 @@ const Container = styled.div`
 `
 
 const Layout: FC<LayoutProps> = ({ children }) => {
-  const treeData = useAppSelector(state => state.tree)
+  const { treeData } = useAppSelector(state => state.tree)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     fetchTreeData(dispatch)
   }, [dispatch])
 
-  console.log("treeData_test", treeData)
-
   return (
     <Container>
-      {/* <Tree data={data} /> */}
+      <Tree data={treeData} />
     </Container>
   )
 }
