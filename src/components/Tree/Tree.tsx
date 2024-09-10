@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { TreeProps, TreeNodeProps } from '../../types/types';
 import { RightOutlined, DownOutlined } from '@ant-design/icons';
-import { fetchItem, fetchSelectedName } from '../../store/actions/tree';
+import { fetchItem, fetchSelectedName, fetchSelectedProperties } from '../../store/actions/tree';
 import { useAppDispatch } from '../../store/hooks';
 import "./Tree.scss"
 
@@ -16,6 +16,7 @@ const TreeNode: FC<TreeNodeProps> = ({ node }) => {
         if (!hasChildren) {
             dispatch(fetchItem(node.id))
             dispatch(fetchSelectedName(node.name))
+            dispatch(fetchSelectedProperties(node.properties!))
         }
     }
 
