@@ -1,4 +1,12 @@
 import { Action } from "../../types/types";
+import { LOADING_START, 
+         DATA_FETCH_SUCCESS, 
+         FETCH_ITEM,
+         FETCH_SELECTED_NAME,
+         FETCH_SELECTED_PROPERTIES,
+         SET_MODYFIED_DATA,
+         CLEAR_STATE
+} from "./rootReducer";
 
 const initialState = {
     loading: false,
@@ -11,38 +19,38 @@ const initialState = {
 
 export default function treeReducer (state = initialState, action: Action) {
     switch (action.type) {
-        case 'loading_start': 
+        case LOADING_START: 
             return {
                 ...state,
                 loading: true
             }
-        case 'data_fetch_success':
+        case DATA_FETCH_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 treeData: action.data
             }
-        case 'fetch_item': 
+        case FETCH_ITEM: 
             return {
                 ...state,
                 activeId: action.data
             }
-        case 'fetch_selected_name':
+        case FETCH_SELECTED_NAME:
             return {
                 ...state,
                 name: action.data
             }
-        case 'fetch_selected_properties':
+        case FETCH_SELECTED_PROPERTIES:
             return {
                 ...state,
                 itemProperties: action.data
             }
-        case 'set_modified_data':
+        case SET_MODYFIED_DATA:
             return {
                 ...state,
                 treeModifiedData: action.data
             }
-        case 'clear_state':
+        case CLEAR_STATE:
             return {
                 ...state,
                 activeId: "",

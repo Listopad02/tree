@@ -1,6 +1,5 @@
 import { FC, useState } from 'react'
 import { TreeProps, TreeNodeProps } from '../../types/types';
-import { RightOutlined, DownOutlined } from '@ant-design/icons';
 import { fetchItem, fetchSelectedName, fetchSelectedProperties } from '../../store/actions/tree';
 import { useAppDispatch } from '../../store/hooks';
 import { TreeItem } from './TreeItem';
