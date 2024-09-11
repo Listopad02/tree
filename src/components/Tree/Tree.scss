@@ -15,9 +15,16 @@
     }
     li {
         cursor: pointer;
+
+        &:hover {
+            color: red;
+        }
     }
 }
 
 .tree-child {
     padding: 0 0 0 10px;
+}
+.active {
+    color: red;
 }

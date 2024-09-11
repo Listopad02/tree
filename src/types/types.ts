@@ -42,3 +42,9 @@ export interface ButtonProps {
     onClick?: any
     children?: React.ReactNode
 }
+export interface TreeItemProps {
+    text: string
+    id: string
+    hasChildren: boolean
+    isVisible: boolean
+}
