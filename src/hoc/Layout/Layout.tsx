@@ -1,4 +1,4 @@
-import { LayoutProps } from "../../types/types"
+import { LayoutProps, Node } from "../../types/types"
 import { FC, useEffect } from "react"
 import { Tree } from "../../components/Tree/Tree"
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
@@ -31,10 +31,11 @@ const Title = styled.p`
   fint-size: 16px;
 `
 
-const Layout: FC<LayoutProps> = ({ children }) => {
+const Layout: FC<LayoutProps> = () => {
   const dispatch = useAppDispatch()
   const { treeData } = useAppSelector(state => state.tree)
   const { name } = useAppSelector(state => state.tree)
+  const { treeModifiedData }: { treeModifiedData: Node[] | [] } = useAppSelector(state => state.tree)
 
   useEffect(() => {
     fetchTreeData(dispatch)
@@ -43,7 +44,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <Container>
       <TreeContainer>
-        <Tree data={treeData} />
+        <Tree data={treeModifiedData.length ? treeModifiedData : treeData} />
       </TreeContainer>
       <TreeOptionsContainer>
         <Title>{name ? name : "Выберите элемент из дерева"}</Title>
