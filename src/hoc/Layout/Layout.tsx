@@ -4,6 +4,8 @@ import { Tree } from "../../components/Tree/Tree"
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
 import { fetchTreeData } from "../../store/actions/tree"
 import { TreeOptions } from "../../components/TreeOptions/TreeOptions"
+import { ButtonComponent } from "../../components/Button/Button"
+import { downloadFile } from "../../utils/functions"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -30,6 +32,18 @@ const Title = styled.p`
   margin: 10px 0;
   fint-size: 16px;
 `
+const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  width: 50%;
+`
+const ControlsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+`
 
 const Layout: FC<LayoutProps> = () => {
   const dispatch = useAppDispatch()
@@ -47,7 +61,23 @@ const Layout: FC<LayoutProps> = () => {
         <Tree data={treeModifiedData.length ? treeModifiedData : treeData} />
       </TreeContainer>
       <TreeOptionsContainer>
+        <ControlsContainer>
         <Title>{name ? name : "Выберите элемент из дерева"}</Title>
+          <ButtonsContainer>
+            <ButtonComponent 
+              text="Скачать файл" 
+              type="primary" 
+              action="download" 
+              onClick={() => downloadFile(treeModifiedData.length ? treeModifiedData : treeData)}
+            />
+            <ButtonComponent 
+              text="Загрузить файл" 
+              type="default" 
+              action="upload" 
+              onClick={() => downloadFile(treeModifiedData.length ? treeModifiedData : treeData)}
+            />
+          </ButtonsContainer>
+        </ControlsContainer>
         <TreeOptions />
       </TreeOptionsContainer>
     </Container>

@@ -34,3 +34,10 @@ export interface SelectProps {
     options: any
     selectedValue: string
 }
+
+export interface ButtonProps {
+    text: string
+    type: 'primary' | 'default' | 'dashed'
+    action: 'download' | 'upload'
+    onClick: any
+}
