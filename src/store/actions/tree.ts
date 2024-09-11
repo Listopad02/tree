@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TreeProps, Properties } from "../../types/types";
+import { TreeProps, Properties, Node } from "../../types/types";
 
 export function loadingStart() {
     return {
@@ -37,5 +37,34 @@ export function fetchSelectedName(data: string) {
 export function fetchSelectedProperties(data: Properties[]) {
     return {
         type: "fetch_selected_properties", data
+    }
+}
+
+export function fetchEditData(
+    itemProperties: Properties[],
+    value: string | undefined,
+    id: string | undefined,
+    treeData: Node[],
+    activeId: string
+) {
+    const element = itemProperties.map(item => 
+        item.id === id ? { ...item, selected: value } : item
+    )
+    let data = treeData
+
+    const modify = (data: any) => {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].id === activeId) data[i].properties = element
+
+            if (data[i].children) {
+                modify(data[i].children)
+            }
+        }
+    }
+
+    modify(data)
+
+    return {
+        type: "set_modified_data", data
     }
 }

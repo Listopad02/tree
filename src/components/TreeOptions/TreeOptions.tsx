@@ -1,4 +1,4 @@
-import { Tabs, Select } from "antd"
+import { Tabs } from "antd"
 import type { TabsProps } from 'antd';
 import { useAppSelector } from "../../store/hooks";
 import { Properties } from "../../types/types";
@@ -14,10 +14,6 @@ const Text = styled.p`
     margin: 0;
     font-size: 16px;
 `
-const StyledSelect = styled(Select)`
-    width: 100%;
-    max-width: 300px;
-`
 
 export const TreeOptions = () => {
     const { itemProperties }: { itemProperties: Properties[] | [] } = useAppSelector(state => state.tree)
@@ -27,14 +23,13 @@ export const TreeOptions = () => {
         label: item.tabname,
         children: item.editable !== true ?
             <Container>
-                {item.options.map((option, i) => <Text key={i}>{option}</Text>)}
+                {item.options.map((option) => <Text key={item.id}>{option}</Text>)}
             </Container> :
             <Container>
-                {/* <StyledSelect 
-                    options={item.options.map(option => ({ value: option, label: option }))}
-                    value={item.selected} 
-                /> */}
-                <SelectComponent options={item} />
+                <SelectComponent 
+                    options={item}
+                    key={item.id}
+                />
             </Container>
     }))
 

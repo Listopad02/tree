@@ -29,3 +29,8 @@ export type Action = {
     type: string
     data?: TreeProps | Properties[] | string | Node[]
 }
+
+export interface SelectProps {
+    options: any
+    selectedValue: string
+}

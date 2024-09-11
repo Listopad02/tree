@@ -12,7 +12,7 @@
                         "name": "Студия 34 кв.м.",
                         "properties": [
                             {
-                                "id": "0",
+                                "id": "7",
                                 "tabname": "Основные удобства",
                                 "editable": false,
                                 "options": [
@@ -22,7 +22,7 @@
                                 ]
                             },
                             {
-                                "id": "1",
+                                "id": "8",
                                 "tabname": "Количество проживающих",
                                 "editable": true,
                                 "selected": "Одноместная",
@@ -44,7 +44,7 @@
                         "name": "Квартира 40 кв.м.",
                         "properties": [
                             {
-                                "id": "0",
+                                "id": "9",
                                 "tabname": "Основные удобства",
                                 "editable": false,
                                 "options": [
@@ -54,7 +54,7 @@
                                 ]
                             },
                             {
-                                "id": "1",
+                                "id": "10",
                                 "tabname": "Количество гостей",
                                 "editable": true,
                                 "selected": "Два",
@@ -70,7 +70,7 @@
                         "name": "Квартира 42 кв.м.",
                         "properties": [
                             {
-                                "id": "0",
+                                "id": "11",
                                 "tabname": "Основные удобства",
                                 "editable": false,
                                 "options": [
@@ -80,7 +80,7 @@
                                 ]
                             },
                             {
-                                "id": "1",
+                                "id": "12",
                                 "tabname": "Проживание с животными",
                                 "editable": true,
                                 "selected": "Запрещено",
@@ -102,7 +102,7 @@
                         "name": "Квартира 65 кв.м.",
                         "properties": [
                             {
-                                "id": "0",
+                                "id": "13",
                                 "tabname": "Основные удобства",
                                 "editable": false,
                                 "options": [
@@ -111,7 +111,7 @@
                                 ]
                             },
                             {
-                                "id": "1",
+                                "id": "14",
                                 "tabname": "Дней проживания",
                                 "editable": true,
                                 "selected": "До недели",

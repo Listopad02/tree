@@ -35,7 +35,6 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   const dispatch = useAppDispatch()
   const { treeData } = useAppSelector(state => state.tree)
   const { name } = useAppSelector(state => state.tree)
-  const { itemProperties } = useAppSelector(state => state.tree)
 
   useEffect(() => {
     fetchTreeData(dispatch)

@@ -5,7 +5,8 @@ const initialState = {
     treeData: [],
     activeId: "",
     name: "",
-    itemProperties: []
+    itemProperties: [],
+    treeModifiedData: []
 }
 
 export default function treeReducer (state = initialState, action: Action) {
@@ -35,6 +36,11 @@ export default function treeReducer (state = initialState, action: Action) {
             return {
                 ...state,
                 itemProperties: action.data
+            }
+        case 'set_modified_data':
+            return {
+                ...state,
+                treeModifiedData: action.data
             }
         default:
             return state
