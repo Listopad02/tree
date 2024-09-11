@@ -31,7 +31,7 @@ export type Action = {
 }
 
 export interface SelectProps {
-    options: any
+    options: string[]
     selectedValue: string
 }
 
@@ -39,5 +39,6 @@ export interface ButtonProps {
     text: string
     type: 'primary' | 'default' | 'dashed'
     action: 'download' | 'upload'
-    onClick: any
+    onClick?: any
+    children?: React.ReactNode
 }

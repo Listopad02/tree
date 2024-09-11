@@ -1,11 +1,11 @@
 import { LayoutProps, Node } from "../../types/types"
-import { FC, useEffect } from "react"
+import { FC, useEffect, useRef } from "react"
 import { Tree } from "../../components/Tree/Tree"
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
 import { fetchTreeData } from "../../store/actions/tree"
 import { TreeOptions } from "../../components/TreeOptions/TreeOptions"
 import { ButtonComponent } from "../../components/Button/Button"
-import { downloadFile } from "../../utils/functions"
+import { downloadFile, uploadFile } from "../../utils/functions"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -50,6 +50,7 @@ const Layout: FC<LayoutProps> = () => {
   const { treeData } = useAppSelector(state => state.tree)
   const { name } = useAppSelector(state => state.tree)
   const { treeModifiedData }: { treeModifiedData: Node[] | [] } = useAppSelector(state => state.tree)
+  const inputRef = useRef(null)
 
   useEffect(() => {
     fetchTreeData(dispatch)
@@ -70,12 +71,19 @@ const Layout: FC<LayoutProps> = () => {
               action="download" 
               onClick={() => downloadFile(treeModifiedData.length ? treeModifiedData : treeData)}
             />
-            <ButtonComponent 
-              text="Загрузить файл" 
-              type="default" 
-              action="upload" 
-              onClick={() => downloadFile(treeModifiedData.length ? treeModifiedData : treeData)}
-            />
+              <ButtonComponent 
+                text="Загрузить файл" 
+                type="default" 
+                action="upload" 
+              >
+                <input
+                  hidden
+                  accept=".json"
+                  type="file"
+                  onChange={(e) => uploadFile(e, dispatch)}
+                  ref={inputRef}
+                />
+              </ButtonComponent>
           </ButtonsContainer>
         </ControlsContainer>
         <TreeOptions />
