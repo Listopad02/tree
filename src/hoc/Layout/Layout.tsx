@@ -20,6 +20,7 @@ const TreeContainer = styled.div`
   width: 30%;
   height: 100%;
   overflow-y: scroll;
+  border-right: 1px solid #ccc;
 `
 const TreeOptionsContainer = styled.div`
   width: 70%;

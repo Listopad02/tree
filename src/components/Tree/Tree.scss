@@ -1,6 +1,5 @@
 .tree-parent {
     list-style-type: none;
-    cursor: pointer;
     height: 100%;
     padding: 0 0 0 10px;
     margin: 0;
@@ -13,6 +12,9 @@
         p {
             margin: 10px 0;
         }
+    }
+    li {
+        cursor: pointer;
     }
 }
 
