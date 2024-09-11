@@ -60,17 +60,17 @@ const Layout: FC<LayoutProps> = () => {
   return (
     <Container>
       <TreeContainer>
-        <Tree data={treeModifiedData.length ? treeModifiedData : treeData} />
+        <Tree data={treeModifiedData.length !== 0 ? treeModifiedData : treeData} />
       </TreeContainer>
       <TreeOptionsContainer>
         <ControlsContainer>
-        <Title>{name ? name : "Выберите элемент из дерева"}</Title>
+          <Title>{name ? name : "Выберите элемент из дерева"}</Title>
           <ButtonsContainer>
             <ButtonComponent 
               text="Скачать файл" 
               type="primary" 
               action="download" 
-              onClick={() => downloadFile(treeModifiedData.length ? treeModifiedData : treeData)}
+              onClick={() => downloadFile(treeModifiedData.length !== 0 ? treeModifiedData : treeData)}
             />
               <ButtonComponent 
                 text="Загрузить файл" 
@@ -87,7 +87,7 @@ const Layout: FC<LayoutProps> = () => {
               </ButtonComponent>
           </ButtonsContainer>
         </ControlsContainer>
-        <TreeOptions />
+        {name && <TreeOptions />}
       </TreeOptionsContainer>
     </Container>
   )

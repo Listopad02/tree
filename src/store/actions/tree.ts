@@ -68,3 +68,9 @@ export function fetchEditData(
         type: "set_modified_data", data
     }
 }
+
+export function clearState() {
+    return {
+        type: "clear_state",
+    }
+}

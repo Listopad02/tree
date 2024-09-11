@@ -42,6 +42,14 @@ export default function treeReducer (state = initialState, action: Action) {
                 ...state,
                 treeModifiedData: action.data
             }
+        case 'clear_state':
+            return {
+                ...state,
+                activeId: "",
+                name: "",
+                itemProperties: [],
+                treeModifiedData: []
+            }
         default:
             return state
     }
